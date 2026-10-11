@@ -549,6 +549,25 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`[CONNECTOR] Backend API server running on port ${PORT}`);
-});
+// Serve frontend static build in production
+const clientDistPath = path.join(__dirname, '..', 'client', 'dist');
+if (fs.existsSync(clientDistPath)) {
+  console.log(`[INFO] Serving static client build from: ${clientDistPath}`);
+  app.use(express.static(clientDistPath));
+  
+  // SPA fallback for non-API routes
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) {
+      return next();
+    }
+    res.sendFile(path.join(clientDistPath, 'index.html'));
+  });
+}
+
+if (process.env.NODE_ENV !== 'test' && require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`[CONNECTOR] Production server running on port ${PORT}`);
+  });
+}
+
+module.exports = app;
