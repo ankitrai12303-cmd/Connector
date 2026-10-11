@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --primary-navy: #0B2545;
+    --navy-light: #133E6E;
+    --gov-blue: #1E3A8A;
+    --saffron: #F97316;
+    --saffron-dark: #EA580C;
+    --chakra-blue: #104C91;
+    --gov-green: #15803D;
+    --gov-green-light: #16A34A;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans antialiased min-h-screen selection:bg-amber-200 selection:text-slate-900;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Accessibility Modes */
+body.font-size-sm {
+  font-size: 14px;
+}
+body.font-size-base {
+  font-size: 16px;
+}
+body.font-size-lg {
+  font-size: 18px;
+}
+body.font-size-xl {
+  font-size: 20px;
+}
+
+body.high-contrast {
+  filter: contrast(125%);
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.high-contrast header,
+body.high-contrast nav,
+body.high-contrast footer,
+body.high-contrast .bg-white,
+body.high-contrast .bg-slate-50,
+body.high-contrast .bg-slate-100 {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+body.high-contrast .text-slate-600,
+body.high-contrast .text-slate-700,
+body.high-contrast .text-slate-500 {
+  color: #e2e8f0 !important;
+}
+
+body.high-contrast .border {
+  border-color: #ffffff !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Pulse animation for voice assistant */
+@keyframes audio-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.4;
+  }
+}
+
+.animate-audio-ring {
+  animation: audio-pulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

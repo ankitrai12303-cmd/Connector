@@ -1,0 +1,25 @@
+{
+  "name": "connector-platform",
+  "version": "1.0.0",
+  "description": "CONNECTOR — Government Schemes for Everyone | Connecting Every Citizen to Every Opportunity",
+  "scripts": {
+    "dev": "node server/index.js",
+    "client": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "start": "node server/index.js"
+  },
+  "keywords": [
+    "govtech",
+    "government-schemes",
+    "india",
+    "digital-india",
+    "dbt",
+    "pm-kisan",
+    "ayushman-bharat",
+    "ai-assistant",
+    "voice-assistant",
+    "accessibility"
+  ],
+  "author": "CONNECTOR Team",
+  "license": "MIT"
+}
